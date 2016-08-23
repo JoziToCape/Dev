@@ -49,7 +49,7 @@ public class EmployeeController {
 		
 		employee = employeeService.getEmployeeByEmpNumber(employee.getUsername());
 		
-		if(employee != null){
+		/*if(employee != null){
 			
 			session.setAttribute("loggedInUser", employee.getUsername());
 			model.addObject("loggedInUser", employee.getUsername());
@@ -73,7 +73,8 @@ public class EmployeeController {
 		else{
 			  retRole="redirect:error";
 			  System.out.println("You are not registered to use the system. Consults Administrator");
-		}
+		}*/
+		retRole= "redirect:home";
 		return retRole;
 	}
 	
