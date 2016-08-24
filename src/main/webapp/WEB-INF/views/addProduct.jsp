@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Add Product</title>
 </head>
 <c:import url="templates/navbar.jsp"></c:import>
 <body class=".container-fluid">
@@ -30,7 +30,8 @@
           </div>
    <hr>
    </form>
-   <form:form method="POST" action="saveProduct" modelAttribute="saveProduct">
+   <div id="addProductResponse"></div>  
+   <form:form id="addProduct" method="POST" action="saveProduct" modelAttribute="saveProduct">
    
    <fieldset>	<legend>Customer Details</legend>					
 	<div class="row">
@@ -176,79 +177,73 @@
    </div>
 	</div>
 	</fieldset><br><br><fieldset>
-	<legend align="right">Machine Accessories</legend>
+	<legend align="left">Machine Accessories</legend>
 	<div class="row">
 	<div class="col-xs-2 form-control-label">
-	    <label for="serailNo"><input type="checkbox" id="bridgeunitserial" />Bridge unit</label>
+	    <label for="serailNo"><input type="checkbox" id="bridgeunitserial" />&nbsp;Bridge unit</label>
 	    </div>
 	    <div class="col-xs-3">
-        <label for="bridgeunit">Serial Number:</label><input type="text" id="bridgeunit"  disabled/>
+        <label for="bridgeunit">Serial Number:&nbsp;&nbsp;</label><input type="text" class="form-control input-sm"  id="bridgeunit"  disabled/>
         </div>
         
         <div class="col-xs-2 form-control-label">
-	    <label for="serailNo"><input type="checkbox" id="faxunit" />Fax Unit:</label>
+	    <label for="serailNo"><input type="checkbox" id="faxunit" />&nbsp;Fax Unit:</label>
 	    </div>
 	    <div class="col-xs-3">
-        <label for="faxunitserial">Serial Number:</label><input type="text" id="faxunitserial"  disabled/>
+        <label for="faxunitserial">Serial Number:&nbsp;&nbsp;</label><input type="text" class="form-control input-sm"  id="faxunitserial"  disabled/>
         </div>
 	</div>
 	<br>
 	<div class="row">
 	<div class="col-xs-2 form-control-label">
-	    <label for="serailNo"><input type="checkbox" id="onebintrayserial" />One bin tray</label>
+	    <label for="serailNo"><input type="checkbox" id="onebintrayserial" />&nbsp;One bin tray</label>
 	    </div>
 	    <div class="col-xs-3">
-        <label for="onebintray">Serial Number:</label><input type="text" id="onebintray"  disabled/>
+        <label for="onebintray">Serial Number:&nbsp;&nbsp;</label><input type="text" class="form-control input-sm"  id="onebintray"  disabled/>
         </div>
         
         <div class="col-xs-2 form-control-label">
-	    <label for="serailNo"><input type="checkbox" id="finisher" />Finisher:</label>
+	    <label for="serailNo"><input type="checkbox" id="finisher" />&nbsp;Finisher:</label>
 	    </div>
 	    <div class="col-xs-3">
-        <label for="finisherserial">Serial Number:</label><input type="text" id="finisherserial"  disabled/>
+        <label for="finisherserial">Serial Number:&nbsp;&nbsp;</label><input type="text" class="form-control input-sm"  id="finisherserial"  disabled/>
         </div>
 	</div>
 	<br>
 	<div class="row">
 	<div class="col-xs-2 form-control-label">
-	    <label for="serailNo"><input type="checkbox" id="ltcserial" />LCT</label>
+	    <label for="serailNo"><input type="checkbox" id="ltcserial" />&nbsp;LCT</label>
 	    </div>
 	    <div class="col-xs-3">
-        <label for="ltc">Serial Number:</label><input type="text" id="ltc"  disabled/>
+        <label for="ltc">Serial Number:&nbsp;&nbsp;</label><input type="text" class="form-control input-sm"  id="ltc"  disabled/>
         </div>
         
         
         <div class="row">
 	   <div class="col-xs-2 form-control-label">
-	    <label for="serailNo"><input type="checkbox" id="credenzaserial" />Credenza</label>
+	    <label for="serailNo"><input type="checkbox" id="credenzaserial" />&nbsp;Credenza</label>
 	    </div>
 	    <div class="col-xs-3">
-        <label for="credenza">Serial Number:</label><input type="text" id="credenza"  disabled/>
+        <label for="credenza">Serial Number:&nbsp;&nbsp;</label><input type="text" class="form-control input-sm"  id="credenza"  disabled/>
         </div>
 	
 	</div>
         <br>
 	<div class="col-xs-2 form-control-label">
-	    <label for="serailNo"><input type="checkbox" id="additionalPaperTrays" />Additional paper trays:</label>
+	    <label for="serailNo"><input type="checkbox"  id="additionalPaperTrays" />&nbsp;&nbsp;Additional paper trays:</label>
 	    </div>
 	    <div class="col-xs-3">
-        <label for="additionalserial">Serial Number:</label><input type="text" id="additionalserial"  disabled/>
+        <label for="additionalserial">Serial Number:&nbsp;&nbsp;</label><input type="text" class="form-control input-sm"  id="additionalserial"  disabled/>
         </div>
 	</div>
-	</fieldset><br>
+	</fieldset><br><br>
 	<div class="form-group row">
 						<div class="col-sm-offset-2 col-sm-8">
 							<input type="submit" value="Submit"
 								class="btn btn-primary btn-block btn-lg" tabindex="9" id="submit">
 						</div>
 					</div>
-	</form:form>
-						
-	
-
-
-
-	
+	</form:form>		
 
 </div>
  
@@ -284,7 +279,8 @@ document.getElementById('credenzaserial').onchange = function() {
 </body>
 <script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/jquery-2.1.4.min.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/bootstrap-datepicker.js" />" ></script>
-<script type="text/javascript"src="<c:url value="/resources/bootstrap-3.3.6/js/bootstrap.min.js" />"></script> 
+<script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/bootstrap.min.js" />"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
 <link href="<c:url value="/resources/bootstrap-3.3.6/css/bootstrap.min.css" />"
        rel="stylesheet" type="text/css" />
        
@@ -310,4 +306,47 @@ document.getElementById('credenzaserial').onchange = function() {
     	margin: 20px;
     }
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+	   
+	  $('#addProduct').submit(function(event) {
+	      var serialNumber = $('#serialNumber').val();
+	      var productName = $('#productName').val();
+	      var startDate = $('#startDate').val();
+	      var endDate = $('#endDate')
+	      var bridgeunitserial = $('#bridgeunitserial').val();
+	      var faxunit = $('#faxunit').val();
+	      var onebintrayserial = $('onebintrayserial').val();
+	      var finisher = $('finisher').val();
+	      var ltcserial = $('ltcserial').val();
+	      var credenzaserial = $('credenzaserial').val();
+	      var additionalPaperTrays = $('additionalPaperTrays').val();
+	    
+	      var json = { "Product Name" : productName, "Serial No" : serialNumber};
+	       
+	    $.ajax({
+	        url: $("#addProduct").attr( "action"),
+	        data: JSON.stringify(json),
+	        type: "POST",
+	         
+	        beforeSend: function(xhr) {
+	            xhr.setRequestHeader("Accept", "application/json");
+	            xhr.setRequestHeader("Content-Type", "application/json");
+	        },
+	        success: function(product) {
+	            var respContent = "";
+	             
+	            respContent += "<span class='success'>Product was added [";
+	            respContent += product.productName + " : ";
+	            respContent += product.serialNumber + " : ""]</span>";
+	             
+	            $("#addProductResponse").html(respContent);         
+	        }
+	    });
+	      
+	    event.preventDefault();
+	  });
+	    
+	});
+</script>
 </html>
