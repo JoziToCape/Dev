@@ -30,8 +30,12 @@
           </div>
    <hr>
    </form>
+   
+   <!-- Display success or error message when data in inserted into database -->
    <div id="addProductResponse"></div>  
-   <form:form id="addProduct" method="POST" action="saveProduct" modelAttribute="saveProduct">
+   
+   <!-- ajax have POST  method="POST" action="saveProduct" -->
+   <form:form id="addProduct" modelAttribute="saveProduct">
    
    <fieldset>	<legend>Customer Details</legend>					
 	<div class="row">
@@ -247,45 +251,20 @@
 
 </div>
  
-<script>
-	document.getElementById('bridgeunitserial').onchange = function() {
-    document.getElementById('bridgeunit').disabled = !this.checked;
-};
-document.getElementById('faxunit').onchange = function() {
-    document.getElementById('faxunitserial').disabled = !this.checked;
-};
-document.getElementById('onebintrayserial').onchange = function() {
-    document.getElementById('onebintray').disabled = !this.checked;
-};
-document.getElementById('finisher').onchange = function() {
-    document.getElementById('finisherserial').disabled = !this.checked;
-};
-document.getElementById('ltcserial').onchange = function() {
-    document.getElementById('ltc').disabled = !this.checked;
-};
-document.getElementById('additionalPaperTrays').onchange = function() {
-    document.getElementById('additionalserial').disabled = !this.checked;
-};
-document.getElementById('credenzaserial').onchange = function() {
-    document.getElementById('credenza').disabled = !this.checked;
-};
-</script>
-
-
    </div>
    </div>
  
   
 </body>
+<script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/libs/constrollerForms.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/jquery-2.1.4.min.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/bootstrap-datepicker.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
-<link href="<c:url value="/resources/bootstrap-3.3.6/css/bootstrap.min.css" />"
-       rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/bootstrap-3.3.6/css/bootstrap.min.css" />"rel="stylesheet" type="text/css" />
        
-       <link href="style.css" rel="stylesheet" type="text/css"/>
-    <link href="lib/css/bootstrap.min.css" rel="stylesheet"  type="text/css"/>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<link href="lib/css/bootstrap.min.css" rel="stylesheet"  type="text/css"/>
        
  <script type="text/javascript">
     $(document).ready(function () {
@@ -306,47 +285,4 @@ document.getElementById('credenzaserial').onchange = function() {
     	margin: 20px;
     }
 </style>
-<script type="text/javascript">
-$(document).ready(function() {
-	   
-	  $('#addProduct').submit(function(event) {
-	      var serialNumber = $('#serialNumber').val();
-	      var productName = $('#productName').val();
-	      var startDate = $('#startDate').val();
-	      var endDate = $('#endDate')
-	      var bridgeunitserial = $('#bridgeunitserial').val();
-	      var faxunit = $('#faxunit').val();
-	      var onebintrayserial = $('onebintrayserial').val();
-	      var finisher = $('finisher').val();
-	      var ltcserial = $('ltcserial').val();
-	      var credenzaserial = $('credenzaserial').val();
-	      var additionalPaperTrays = $('additionalPaperTrays').val();
-	    
-	      var json = { "Product Name" : productName, "Serial No" : serialNumber};
-	       
-	    $.ajax({
-	        url: $("#addProduct").attr( "action"),
-	        data: JSON.stringify(json),
-	        type: "POST",
-	         
-	        beforeSend: function(xhr) {
-	            xhr.setRequestHeader("Accept", "application/json");
-	            xhr.setRequestHeader("Content-Type", "application/json");
-	        },
-	        success: function(product) {
-	            var respContent = "";
-	             
-	            respContent += "<span class='success'>Product was added [";
-	            respContent += product.productName + " : ";
-	            respContent += product.serialNumber + " : ""]</span>";
-	             
-	            $("#addProductResponse").html(respContent);         
-	        }
-	    });
-	      
-	    event.preventDefault();
-	  });
-	    
-	});
-</script>
 </html>
