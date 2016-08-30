@@ -34,8 +34,8 @@
    <!-- Display success or error message when data in inserted into database -->
    <div id="addProductResponse"></div>  
    
-   <!-- ajax have POST  method="POST" action="saveProduct" -->
-   <form:form id="addProduct" modelAttribute="saveProduct">
+   <!-- ajax I have POST this will be method="POST" action="saveProduct" -->
+   <form:form id="addProduct"  method="POST" action="addProduct" modelAttribute="addProduct">
    
    <fieldset>	<legend>Customer Details</legend>					
 	<div class="row">
@@ -242,9 +242,8 @@
 	</div>
 	</fieldset><br><br>
 	<div class="form-group row">
-						<div class="col-sm-offset-2 col-sm-8">
-							<input type="submit" value="Submit"
-								class="btn btn-primary btn-block btn-lg" tabindex="9" id="submit">
+					<div class="col-sm-offset-2 col-sm-8">
+							<input type="submit" value="Submit"	class="btn btn-primary btn-block btn-lg" name="submitProduct" id="submitProduct" tabindex="9" id="submit">
 						</div>
 					</div>
 	</form:form>		
@@ -256,15 +255,65 @@
  
   
 </body>
-<script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/libs/constrollerForms.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/controllerForms.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/jquery-2.1.4.min.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/bootstrap-datepicker.js" />" ></script>
-<script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/bootstrap.min.js" />"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
-<link href="<c:url value="/resources/bootstrap-3.3.6/css/bootstrap.min.css" />"rel="stylesheet" type="text/css" />
-       
-<link href="style.css" rel="stylesheet" type="text/css"/>
-<link href="lib/css/bootstrap.min.css" rel="stylesheet"  type="text/css"/>
+<script type="text/javascript" src="<c:url value="/resources/bootstrap-3.3.6/js/bootstrap.min.js" />"></script>  
+<link href="<c:url value="/resources/bootstrap-3.3.6/css/bootstrap.min.css" />"rel="stylesheet" type="text/css" />       
+
+<script type="text/javascript">
+
+//Returns an array with values of the selected (checked) checkboxes in "frm"
+function getSelectedChbox(frm) {
+  var selchbox = [];        // array that will store the value of selected checkboxes
+
+  // gets all the input tags in frm, and their number
+  var inpfields = frm.getElementsByTagName('input');
+  var nr_inpfields = inpfields.length;
+
+  // traverse the inpfields elements, and adds the value of selected (checked) checkbox in selchbox
+  for(var i=0; i<nr_inpfields; i++) {
+    if(inpfields[i].type == 'checkbox' && inpfields[i].checked == true) {
+    console.log(inpfields[i].id);
+    var textboxVal = document.getElementById(inpfields[i].id+"code").value;
+	console.log(textboxVal);
+    var obj = {checkbox:inpfields[i].value,textbox:textboxVal};
+    	selchbox.push(obj);
+    }			
+  }
+  return selchbox;
+}
+/* Test this function */
+// When click on #langtest, alert the selected values
+document.getElementById('submitProduct').onclick = function(){
+  var selchb = getSelectedChbox(this.form);     // gets the array returned by getSelectedChbox()
+  alert(JSON.stringify(selchb));
+}
+
+
+//disable input text if check-box is not checked
+document.getElementById('bridgeunitserial').onchange = function() {
+document.getElementById('bridgeunit').disabled = !this.checked;
+};
+document.getElementById('faxunit').onchange = function() {
+    document.getElementById('faxunitserial').disabled = !this.checked;
+};
+document.getElementById('onebintrayserial').onchange = function() {
+    document.getElementById('onebintray').disabled = !this.checked;
+};
+document.getElementById('finisher').onchange = function() {
+    document.getElementById('finisherserial').disabled = !this.checked;
+};
+document.getElementById('ltcserial').onchange = function() {
+    document.getElementById('ltc').disabled = !this.checked;
+};
+document.getElementById('additionalPaperTrays').onchange = function() {
+    document.getElementById('additionalserial').disabled = !this.checked;
+};
+document.getElementById('credenzaserial').onchange = function() {
+    document.getElementById('credenza').disabled = !this.checked;
+};
+</script>
        
  <script type="text/javascript">
     $(document).ready(function () {
